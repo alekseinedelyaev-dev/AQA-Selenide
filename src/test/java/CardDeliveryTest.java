@@ -15,9 +15,7 @@ public class CardDeliveryTest {
 
     @BeforeAll
     public static void setup() {
-        Configuration.browser = "chrome";
         Configuration.baseUrl = "http://localhost:9999";
-        Configuration.browserSize = "1920x1080";
     }
 
     @Test
@@ -39,8 +37,10 @@ public class CardDeliveryTest {
 
         // Очищаем дату, заполненную по умолчанию
         $("[data-test-id='date'] input").click();
+
         $("[data-test-id='date'] input")
                 .sendKeys(Keys.chord(Keys.CONTROL, "a"));
+
         $("[data-test-id='date'] input")
                 .sendKeys(Keys.BACK_SPACE);
 
@@ -61,7 +61,8 @@ public class CardDeliveryTest {
                 .click();
 
         // Отправляем форму
-        $$("button").findBy(text("Забронировать"))
+        $$("button")
+                .findBy(text("Забронировать"))
                 .click();
 
         // Уведомление должно появиться не позднее 15 секунд

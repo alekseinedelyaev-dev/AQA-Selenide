@@ -22,7 +22,7 @@ jobs:
           java-version: '17'
 
       - name: Start application
-        run: java -jar ./artifacts/app-card-delivery.jar > app.log 2>&1 &
+        run: java -jar ./artifacts/app-card-delivery.jar &
 
       - name: Run Selenide tests
-        run: bash ./gradlew clean test -Dselenide.headless=true
+        run: bash ./gradlew test --info -Dselenide.headless=true
